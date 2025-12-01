@@ -46,21 +46,21 @@ Vous allez devoir concevoir 2 script JavaScript sur deux pages différentes.
 -   Aucun script ou attribut JavaScript dois être présent dans le fichier HTML !
 -   Tâche à accomplir :
     -   [x] Afficher les films dans un tableau
-    -   [ ] Créer un bouton **"Ajouter"** qui nous fera apparaître un formulaire
+    -   [x] Créer un bouton **"Ajouter"** qui nous fera apparaître un formulaire
         -   Une zone de saisie pour le titre
         -   Une zone de saisie pour l'année
         -   Une zone de saisie pour l'auteur
         -   Un bouton pour sauvegarder
-    -   [ ] Vérifier les données saisies par l'utilisateur dans le formulaire d'ajout
+    -   [x] Vérifier les données saisies par l'utilisateur dans le formulaire d'ajout
         -   Titre : **minimum 2 caractères**
         -   Année : format de l'année 4 chiffres compris entre **1900 et l'année en cours**
         -   Auteur : **minimum de 5 caractères**
-    -   [ ] Si le formulaire est valide ajouter le film dans le tableau
+    -   [x] Si le formulaire est valide ajouter le film dans le tableau
         -   On enregistrera le titre et le nom de l'auteur avec la **première lettre en MAJUSCULE**
         -   Afficher un message d'alerte pendant 3s : "Film ajouter avec succès"
-    -   [ ] Sinon on affichera un message d'erreur
+    -   [x] Sinon on affichera un message d'erreur
         -   Afficher un message d'alerte pendant 5s : "Erreur dans le formulaire " + les zones d'erreurs
-    -   [ ] Pour le filtre :
+    -   [] Pour le filtre :
         -   Si l'option filtre par titre est sélection on affichera les films par **ordre alphabétique**
         -   Si l'option filtre par année est sélection on affichera les films par **ordre décroissant**
     -   [ ] Enfin, pour chaque film on ajoutera un bouton _"Supprimer"_ qui permettra de retirer le film de la liste

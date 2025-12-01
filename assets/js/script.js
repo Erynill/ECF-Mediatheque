@@ -11,6 +11,11 @@ import { films } from "./app";
 let tabFilm = films;
 /* ---------------------------------------------------- Functions --------------------------------------------------- */
 
+//modifie la première lettre en capitale
+function uppercaseFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 //Affiche les films dans le tableau
 function displayFilm() {
     let elemDisplay = tabFilm
@@ -47,9 +52,14 @@ function addFilm() {
             $("#buttonAddFilm").removeClass("hidden");
             //ajoute le nouveau film avec ses props dans le tableau
             tabFilm.push({
-                title: $("#title").val(),
+                title: uppercaseFirstLetter($("#title").val()),
                 years: Number($("#years").val()),
-                authors: $("#authors").val(),
+                //sépare l'input en deux s'il y a un nom et prénom et met en majuscule la première lettre de chaque
+                authors: $("#authors")
+                    .val()
+                    .split(" ")
+                    .map((elem) => uppercaseFirstLetter(elem))
+                    .join(" "),
             });
             //appelle la fonction pour afficher le tableau modifié
             displayFilm();
@@ -87,6 +97,10 @@ function checkAddFilm() {
     if (returnTab[1] === true) returnTab[0] = "<p>Film ajouter avec succès</p>";
 
     return returnTab;
+}
+
+function sortFilm() {
+    $("#filtre").on("change", function () {});
 }
 /* ----------------------------------------------------- Script ----------------------------------------------------- */
 
