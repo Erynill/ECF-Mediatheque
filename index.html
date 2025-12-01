@@ -5,42 +5,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ECF - Médiathèque</title>
         <link rel="stylesheet" href="/assets/css/style.css" media="screen" />
+        <script type="module" src="/assets/js/script.js"></script>
     </head>
-    <body>
-        <header>
-            <h1>Médiathèque</h1>
-            <nav>
-                <a href="/index.html">Votre liste</a>
-                <a href="/public/recherche_film.html">Recherchez vos films</a>
+    <body class="bg-cyan-950 text-neutral-200">
+        <header class="bg-linear-to-br from-teal-700 to-cyan-900 to-30% pb-5">
+            <h1 class="text-5xl text-center p-12 font-bold shadow-lg">Médiathèque</h1>
+            <nav class="grid grid-cols-2 justify-items-center w-8/10 m-auto items-center mt-6">
+                <a class="text-xl p-3 rounded-2xl selectedNav hover:selectedNav">Votre liste</a>
+                <a class="text-xl p-3 rounded-2xl hoverNav" href="/public/recherche_film.html">Recherchez vos films</a>
             </nav>
         </header>
-        <main>
-            <div>
-                <div class="hidden">
-                    <input type="text" name="title" placeholder="Titre du film" />
-                    <input type="text" name="years" placeholder="Année du film" />
-                    <input type="text" name="authors" placeholder="Auteur du film" />
-                    <button type="button">Sauvegarder</button>
+        <main class="w-9/10 m-auto mt-5 text-lg">
+            <div class="flex justify-center mb-5 bg-linear-to-tl from-white/0 from-50% to-white/20 p-5 rounded-2xl">
+                <div class="flex flex-col plg:flex-row gap-2 w-full items-center">
+                    <input class="input w-1/2" type="text" name="title" placeholder="Titre du film" />
+                    <input class="input w-1/2" type="number" name="years" placeholder="Année du film" />
+                    <input class="input w-1/2" type="text" name="authors" placeholder="Auteur du film" />
+                    <button class="mt-2 button" type="button">Sauvegarder</button>
                 </div>
-                <button type="button">Ajouter un film</button>
+                <button class="button hidden" type="button">Ajouter un film</button>
             </div>
-            <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Année</th>
-                            <th scope="col">Auteur</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>titre</td>
-                            <td>année</td>
-                            <td>auteur</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <section class="">
+                <div class="m-5 mt-10 ms-7">
+                    <label for="filtre">Filtre :</label>
+                    <select class="input" name="filtre" id="filtre">
+                        <option value="title">Titre</option>
+                        <option value="years">Année</option>
+                    </select>
+                </div>
+                <div class="bg-linear-to-tl from-cyan-600/0 from-20% to-cyan-600/20 p-4 rounded-2xl">
+                    <table class="table-auto w-full border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="text-start border-e p-2" scope="col">Titre</th>
+                                <th class="text-start border-e p-2" scope="col">Année</th>
+                                <th class="text-start p-2" scope="col">Auteur</th>
+                                <th class="text-start p-2" scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="shell">titre</td>
+                                <td class="shell">année</td>
+                                <td class="shellEnd">auteur</td>
+                                <td class="shellEnd text-end"><button type="button">Suppr</button></td>
+                            </tr>
+                            <tr>
+                                <td class="shell">titre</td>
+                                <td class="shell">année</td>
+                                <td class="shellEnd">auteur</td>
+                                <td class="shellEnd text-end"><button type="button">Suppr</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </main>
     </body>
