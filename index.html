@@ -4,6 +4,44 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ECF - Médiathèque</title>
+        <link rel="stylesheet" href="/assets/css/style.css" media="screen" />
     </head>
-    <body></body>
+    <body>
+        <header>
+            <h1>Médiathèque</h1>
+            <nav>
+                <a href="/index.html">Votre liste</a>
+                <a href="/public/recherche_film.html">Recherchez vos films</a>
+            </nav>
+        </header>
+        <main>
+            <div>
+                <div class="hidden">
+                    <input type="text" name="title" placeholder="Titre du film" />
+                    <input type="text" name="years" placeholder="Année du film" />
+                    <input type="text" name="authors" placeholder="Auteur du film" />
+                    <button type="button">Sauvegarder</button>
+                </div>
+                <button type="button">Ajouter un film</button>
+            </div>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Année</th>
+                            <th scope="col">Auteur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>titre</td>
+                            <td>année</td>
+                            <td>auteur</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </body>
 </html>
