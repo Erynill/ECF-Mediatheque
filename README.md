@@ -60,10 +60,10 @@ Vous allez devoir concevoir 2 script JavaScript sur deux pages différentes.
         -   Afficher un message d'alerte pendant 3s : "Film ajouter avec succès"
     -   [x] Sinon on affichera un message d'erreur
         -   Afficher un message d'alerte pendant 5s : "Erreur dans le formulaire " + les zones d'erreurs
-    -   [] Pour le filtre :
+    -   [x] Pour le filtre :
         -   Si l'option filtre par titre est sélection on affichera les films par **ordre alphabétique**
         -   Si l'option filtre par année est sélection on affichera les films par **ordre décroissant**
-    -   [ ] Enfin, pour chaque film on ajoutera un bouton _"Supprimer"_ qui permettra de retirer le film de la liste
+    -   [x] Enfin, pour chaque film on ajoutera un bouton _"Supprimer"_ qui permettra de retirer le film de la liste
         -   On demandera une confirmation de suppression :
             -   Si la personne confirme la suppression on retirera le film de la liste
             -   Sinon on annulera la demande de suppression
