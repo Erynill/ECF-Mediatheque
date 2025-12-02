@@ -27,3 +27,11 @@
 .shellEnd {
     @apply border-t p-2;
 }
+
+.buttonPag {
+    @apply border-e p-1 px-4 hover:bg-neutral-300 rounded-s-md;
+}
+
+.selectedPage {
+    @apply bg-neutral-400;
+}

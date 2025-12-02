@@ -9,6 +9,7 @@ import { films } from "./app";
 
 /* ---------------------------------------------------- Variables --------------------------------------------------- */
 let tabFilm = films;
+let timeoutNotif;
 /* ---------------------------------------------------- Functions --------------------------------------------------- */
 
 //modifie la première lettre en capitale
@@ -52,6 +53,10 @@ function addFilm() {
     $("#buttonSaveFilm").on("click", function () {
         let resultCheck = checkAddFilm();
         if (resultCheck[1]) {
+            //supprime l'ancien timeout si nouvelle tentative (permet d'enchaîner les validations des input)
+            if (typeof timeoutNotif !== undefined) clearTimeout(timeoutNotif);
+            //supprime une notif
+            $(".notif").remove();
             //affiche le message avec l'html que checkAddFilm lui renvoie
             $(resultCheck[0])
                 .addClass(
@@ -76,6 +81,8 @@ function addFilm() {
             //timer de 3sec au bout duquel le message se supprime
             setTimeout(() => $(".notif").remove(), 3000);
         } else {
+            if (typeof timeoutNotif !== undefined) clearTimeout(timeoutNotif);
+            $(".notif").remove();
             $(`<ul><p class="mb-2">Erreur dans le formulaire :</p>${resultCheck[0]}</ul>`)
                 .addClass(
                     "fixed top-10 left-1/2 -translate-x-1/2 border border-white/30 rounded-xl w-fit text-center text-red-600 text-lg z-10 bg-red-900/90 p-3 notif"
