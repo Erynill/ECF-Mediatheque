@@ -135,11 +135,40 @@ function sortFilm() {
 function deleteFilm() {
     $(".deleteFilm").on("click", function () {
         let id = $(this).attr("id");
+        let notifDisplay = `<div class="absolute z-20 w-full h-full top-0 bg-white/30" id="notifConf">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cyan-950 p-5 border-2 border-teal-600 rounded-xl"
+            >
+                <p class="text-xl p-3">Voulez-vous vraiment supprimer ?</p>
+                <button
+                    class="p-2 float-left bg-neutral-200/50 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-neutral-200/30"
+                    type="button"
+                    id="confCancel"
+                >
+                    Annuler
+                </button>
+                <button
+                    class="float-right p-2 bg-red-800 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-red-900"
+                    type="button"
+                    id="confDelete"
+                >
+                    Supprimer
+                </button>
+            </div>
+        </div>`;
 
-        //récupère le numéro dans l'id du bouton, ex: "lineTable0" => "0"
-        id = id.charAt(id.length - 1);
-        tabFilm.splice(Number(id), 1);
-        displayFilm();
+        //notif pour confirmer la suppression
+        $(notifDisplay).appendTo("body");
+        $("#confCancel").on("click", function () {
+            $("#notifConf").remove();
+        });
+        $("#confDelete").on("click", function () {
+            $("#notifConf").remove();
+            //récupère le numéro dans l'id du bouton, ex: "lineTable0" => "0"
+            id = id.charAt(id.length - 1);
+            tabFilm.splice(Number(id), 1);
+            displayFilm();
+        });
     });
 }
 /* ----------------------------------------------------- Script ----------------------------------------------------- */

@@ -61,22 +61,33 @@ async function fetchAPI(url) {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Error problem: ${response.status}`);
         let json = response.json();
-        handlerData(json);
+        let check = await handlerData(json);
+        if (typeof check !== "undefined") throw new Error(`${check}`);
     } catch (error) {
-        console.error(`Problem : ${error.message}`);
+        let errorDisplay = ` <div class="ms-5">
+                                <span class="text-2xl text-center">${error.message}</span>
+                            </div>`;
+
+        $("#displayFilm").empty();
+        $(errorDisplay).appendTo("#displayFilm");
     }
 }
 
 //fonction qui gère les données et les redistribue aux bonnes fonctions
 async function handlerData(json) {
     let data = await json;
-    //divise le résultat par dix car dix résultats donnés par l'api à chaque "page" et arrondi au supérieur car si 8 résultats :
-    // 8/10 = 0.8 arrondi au dessus 1
-    let nbrPage = Math.ceil(Number(data.totalResults) / 10);
 
-    //si il y a plus d'une page à afficher alors on créée une pagination
-    if (nbrPage > 1) pagination(nbrPage);
-    displaySearch(data.Search);
+    if (data.Response == "True") {
+        //divise le résultat par dix car dix résultats donnés par l'api à chaque "page" et arrondi au supérieur car si 8 résultats :
+        // 8/10 = 0.8 arrondi au dessus : 1
+        let nbrPage = Math.ceil(Number(data.totalResults) / 10);
+
+        //si il y a plus d'une page à afficher alors on créée une pagination
+        if (nbrPage > 1) pagination(nbrPage);
+        displaySearch(data.Search);
+    } else {
+        return data.Error;
+    }
 }
 
 //fonction de pagination avec comme entrée le nombre de pages nécessaires
