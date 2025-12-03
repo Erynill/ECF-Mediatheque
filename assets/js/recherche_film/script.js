@@ -112,7 +112,7 @@ function pagination(nbrPage) {
         }
     } else {
         //on teste pour si il y a besoin de couper les premières et dernières pages aussi et afficher un élément "..."
-        if (currentPage > 3 && currentPage < nbrPage - 3) {
+        if (currentPage > 4 && currentPage < nbrPage - 3) {
             for (let i = currentPage - 4; i <= currentPage + 4; i++) {
                 //teste du dernier élément
                 if (i == currentPage + 4)
@@ -201,7 +201,7 @@ function displaySearch(search) {
                                 src=${elem.Poster}
                                 alt=${elem.Title}
                             />
-                            <h3 class="font-bold">${elem.Title}</h3>
+                            <h3 class="font-bold text-center">${elem.Title}</h3>
                             <small class="italic text-lg">${elem.Year}</small>
                         </div>`
         )
