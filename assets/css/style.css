@@ -29,9 +29,9 @@
 }
 
 .buttonPag {
-    @apply border-e p-1 px-4 hover:bg-neutral-300 rounded-s-md;
+    @apply border-e p-1 px-4 bg-neutral-200 hover:bg-neutral-300 cursor-pointer;
 }
 
 .selectedPage {
-    @apply bg-neutral-400;
+    @apply bg-neutral-600 border-black text-neutral-200 hover:bg-neutral-600 cursor-auto;
 }
