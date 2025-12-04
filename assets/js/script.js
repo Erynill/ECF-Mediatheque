@@ -1,11 +1,12 @@
 /* ------------------------------------------------------------------------------------------------------------------ */
-/*                                           Technologie : js natif + jquery                                          */
+/*                                      Technologie : js natif + jquery + animejs                                     */
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 "use strict";
 
 import $ from "jquery";
 import { films } from "./app";
+import { logo } from "./animation";
 
 /* ---------------------------------------------------- Variables --------------------------------------------------- */
 let tabFilm = films;
@@ -29,7 +30,7 @@ function displayFilm() {
             .append($(`<td class="shellEnd"></td>`).text(elem.authors))
             .append(
                 $(`<td class="shellEnd text-end">
-                            <button class="bg-red-900 w-10 rounded-lg p-1 transition duration-300 ease-in-out border border-red-900 hover:bg-neutral-200/80 hover:text-red-900 cursor-pointer deleteFilm" id="buttonLine${i}" type="button">
+                            <button class="bg-red-900 w-10 rounded-lg p-1 transition duration-300 ease-in-out border border-red-900 hover:bg-neutral-200/80 hover:text-red-900 hover:scale-110 cursor-pointer deleteFilm" id="buttonLine${i}" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                     <g stroke="currentColor" fill="currentColor">
                                         <path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/>
@@ -141,14 +142,14 @@ function deleteFilm() {
             >
                 <p class="text-xl p-3">Voulez-vous vraiment supprimer ?</p>
                 <button
-                    class="p-2 float-left bg-neutral-200/50 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-neutral-200/30"
+                    class="p-2 float-left bg-neutral-200/50 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-neutral-200/30 hover:scale-110"
                     type="button"
                     id="confCancel"
                 >
                     Annuler
                 </button>
                 <button
-                    class="float-right p-2 bg-red-800 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-red-900"
+                    class="float-right p-2 bg-red-800 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-red-900 hover:scale-110"
                     type="button"
                     id="confDelete"
                 >
@@ -176,3 +177,5 @@ function deleteFilm() {
 displayFilm();
 addFilm();
 sortFilm();
+
+logo();

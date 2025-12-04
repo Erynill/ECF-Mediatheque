@@ -8,11 +8,11 @@
     @apply bg-neutral-700/50 text-cyan-300;
 }
 .hoverNav {
-    @apply transition duration-300 ease-in-out hover:bg-neutral-700/50 hover:text-cyan-300;
+    @apply transition duration-300 ease-in-out hover:bg-neutral-700/50 hover:text-cyan-300 hover:scale-110;
 }
 
 .button {
-    @apply bg-teal-700 p-2 px-5 rounded-xl transition duration-300 ease-in-out hover:bg-teal-900 cursor-pointer;
+    @apply bg-teal-700 p-2 px-5 rounded-xl transition duration-300 ease-in-out hover:bg-teal-900 cursor-pointer hover:scale-110;
 }
 
 .input {
