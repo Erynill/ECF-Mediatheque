@@ -19,26 +19,26 @@ function uppercaseFirstLetter(str) {
 
 //Affiche les films dans le tableau
 function displayFilm() {
-    let elemDisplay = tabFilm
-        .map(
-            (elem, i) => `<tr>
-                        <td class="shell">${elem.title}</td>
-                        <td class="shell">${elem.years}</td>
-                        <td class="shellEnd">${elem.authors}</td>
-                        <td class="shellEnd text-end">
-                            <button class="bg-red-900 w-10 rounded-lg p-1 transition duration-300 ease-in-out border border-red-900 hover:bg-neutral-200/80 hover:text-red-900 cursor-pointer deleteFilm" id="lineTable${i}" type="button">
+    $("#displayFilm").empty();
+    //on crée les éléments un par un et on utilise a méthode "text()" pour éviter l'injection dans notre site
+    tabFilm.forEach((elem, i) => {
+        $("#displayFilm").append(`<tr id="line${i}"></tr>`);
+        $(`#line${i}`)
+            .append($("<td class='shell'></td>").text(elem.title))
+            .append($(`<td class="shell"></td>`).text(elem.years))
+            .append($(`<td class="shellEnd"></td>`).text(elem.authors))
+            .append(
+                $(`<td class="shellEnd text-end">
+                            <button class="bg-red-900 w-10 rounded-lg p-1 transition duration-300 ease-in-out border border-red-900 hover:bg-neutral-200/80 hover:text-red-900 cursor-pointer deleteFilm" id="buttonLine${i}" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                     <g stroke="currentColor" fill="currentColor">
                                         <path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/>
                                     </g>
                                 </svg>
                             </button>
-                        </td>
-                    </tr>`
-        )
-        .join("");
-
-    $("#displayFilm").html(elemDisplay);
+                        </td>`)
+            );
+    });
     //appelle la fonction pour générer un listener à chaque nouvelle création de bouton "supprimer"
     deleteFilm();
 }
@@ -164,7 +164,7 @@ function deleteFilm() {
         });
         $("#confDelete").on("click", function () {
             $("#notifConf").remove();
-            //récupère le numéro dans l'id du bouton, ex: "lineTable0" => "0"
+            //récupère le numéro dans l'id du bouton, ex: "buttonLine0" => "0"
             id = id.charAt(id.length - 1);
             tabFilm.splice(Number(id), 1);
             displayFilm();
