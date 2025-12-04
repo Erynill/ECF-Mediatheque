@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+    --breakpoint-plg: 1200px;
+}
+
+.selectedNav {
+    @apply bg-neutral-700/50 text-cyan-300;
+}
+.hoverNav {
+    @apply transition duration-300 ease-in-out hover:bg-neutral-700/50 hover:text-cyan-300;
+}
+
+.button {
+    @apply bg-teal-700 p-2 px-5 rounded-xl transition duration-300 ease-in-out hover:bg-teal-900 cursor-pointer;
+}
+
+.input {
+    @apply bg-white/20 rounded-lg p-1 focus:outline-2 focus:outline-neutral-200/80 transition duration-300 ease-in-out hover:bg-white/35;
+}
+
+.shell {
+    @apply border-t border-e p-2;
+}
+
+.shellEnd {
+    @apply border-t p-2;
+}
+
+.buttonPag {
+    @apply border-e p-1 px-4 bg-neutral-200 hover:bg-neutral-300 cursor-pointer;
+}
+
+.selectedPage {
+    @apply bg-neutral-600 border-black text-neutral-200 hover:bg-neutral-600 cursor-auto;
+}

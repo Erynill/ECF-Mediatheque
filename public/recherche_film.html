@@ -4,6 +4,46 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ECF - Recherchez vos films</title>
+        <link rel="stylesheet" href="/assets/css/style.css" media="screen" />
+        <script type="module" src="/assets/js/recherche_film/script.js"></script>
     </head>
-    <body></body>
+    <body class="bg-cyan-950 text-neutral-200">
+        <header class="bg-linear-to-br from-teal-700 to-cyan-900 to-30% pb-5">
+            <h1 class="text-5xl text-center p-12 font-bold shadow-lg">Médiathèque</h1>
+            <nav class="grid grid-cols-2 justify-items-center w-8/10 m-auto items-center mt-6">
+                <a class="text-xl p-3 rounded-2xl hoverNav" href="/index.html">Votre liste</a>
+                <a class="text-xl p-3 rounded-2xl selectedNav">Recherchez vos films</a>
+            </nav>
+        </header>
+        <main class="w-9/10 m-auto mt-5 text-lg">
+            <section class="flex flex-col gap-10 mb-10 plg:flex-row">
+                <article
+                    class="flex flex-col items-center gap-5 bg-linear-to-tl from-white/0 from-50% to-white/20 rounded-2xl p-5 h-fit min-w-[255px] max self-center plg:self-start"
+                >
+                    <h2 class="text-xl font-bold">Recherchez votre film :</h2>
+                    <div class="flex flex-col gap-2 items-center">
+                        <input class="input" type="text" placeholder="Titre du film" id="title" />
+                        <input class="input" type="number" placeholder="Année du film" id="year" />
+                        <select class="input w-full" name="typeFilm" id="typeFilm">
+                            <option class="hidden">---Type du film---</option>
+                            <option class="text-cyan-900 font-medium" value="movie">Film</option>
+                            <option class="text-cyan-900 font-medium" value="episode">Épisode</option>
+                            <option class="text-cyan-900 font-medium" value="series">Série</option>
+                        </select>
+                        <button class="button mt-3" type="button" id="buttonSearch">Rechercher</button>
+                    </div>
+                </article>
+                <article>
+                    <div
+                        class="flex flex-wrap gap-10 justify-around bg-linear-to-tl from-white/0 from-50% to-white/20 p-5 rounded-2xl"
+                        id="displayFilm"
+                    ></div>
+                    <div
+                        class="flex flex-wrap w-fit m-auto shadow-md shadow-black text-black mt-2"
+                        id="pagination"
+                    ></div>
+                </article>
+            </section>
+        </main>
+    </body>
 </html>
