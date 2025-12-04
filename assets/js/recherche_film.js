@@ -2,10 +2,15 @@
 /*                                      Technologie : js natif + jquery + animejs                                     */
 /* ------------------------------------------------------------------------------------------------------------------ */
 
+/**
+ * Script de la page de recherche de film
+ * @module script/recherche_film
+ */
+
 "use strict";
 
 import $ from "jquery";
-import { logo } from "../animation";
+import { logo } from "./animation";
 
 /* ---------------------------------------------------- Variables --------------------------------------------------- */
 const apiKey = "34019c68";
@@ -13,8 +18,10 @@ let timeoutNotif;
 let currentPage = 1;
 /* ---------------------------------------------------- Functions --------------------------------------------------- */
 
-//fonction appelé à chaque clique sur le bouton pour construire l'url à donner à la fonction fetch
-//entrée correspondant à la page demandé à l'api (1 par défaut)
+/**
+ * Fonction appelée à chaque clique sur le bouton "Rechercher" pour construire l'url à donner au fetch
+ * @param {number} nbrPage - Correspond à la page demandée par l'utilisateur (1 par défaut)
+ */
 function searchFilm(nbrPage) {
     let searchURL = `https://www.omdbapi.com/?apikey=${apiKey}`;
 
@@ -37,11 +44,14 @@ function searchFilm(nbrPage) {
     if ($("#typeFilm").val() !== "---Type du film---") searchURL += `&type=${$("#typeFilm").val()}`;
     //ne rajoute pas "page" à la requête puisqu'il est par défaut à 1
     if (nbrPage !== 1) searchURL += `&page=${nbrPage}`;
+    //affiche de base la page de chargement le temps du fetch
     displayLoading();
     fetchAPI(searchURL);
 }
 
-//visuel d'un chargement le temps du fetch
+/**
+ * visuel d'un chargement le temps du fetch
+ */
 function displayLoading() {
     let loading = ` <div class="ms-5">
                         <span class="text-2xl text-center">Recherche en cours...</span>
@@ -56,7 +66,11 @@ function displayLoading() {
     $(loading).appendTo("#displayFilm");
 }
 
-//fonction d'appelle à l'API et transmet le json
+/**
+ * fonction d'appelle à l'API et transmet le json
+ * @async
+ * @param {string} url - url de l'API à fetch
+ */
 async function fetchAPI(url) {
     try {
         const response = await fetch(url);
@@ -74,7 +88,12 @@ async function fetchAPI(url) {
     }
 }
 
-//fonction qui gère les données et les redistribue aux bonnes fonctions
+/**
+ * fonction qui gère les données et les redistribue aux bonnes fonctions
+ * @async
+ * @param {JSON} json - json give by the API
+ * @returns retourn s'il y a une erreur pour la catch et la traiter
+ */
 async function handlerData(json) {
     let data = await json;
 
@@ -91,7 +110,10 @@ async function handlerData(json) {
     }
 }
 
-//fonction de pagination avec comme entrée le nombre de pages nécessaires
+/**
+ * fonction de pagination
+ * @param {number} nbrPage - Le nombre de pages nécessaires à la pagination
+ */
 function pagination(nbrPage) {
     //supprime toutes les éléments qui seraient présents à la suite d'un changement de page ou d'une nouvelle recherche
     $("#pagination").empty();
@@ -190,6 +212,10 @@ function pagination(nbrPage) {
     });
 }
 
+/**
+ * afficher les films du résultat de la recherche
+ * @param {Array} search - tableau avec tous les films de la recherche
+ */
 function displaySearch(search) {
     let films = search;
     let elementHtml = films
@@ -221,4 +247,5 @@ $("#buttonSearch").on("click", function () {
     searchFilm(currentPage);
 });
 
+//animation
 logo();
