@@ -1,4 +1,32 @@
-/* ------------------------------------------------------------------------------------------------------------------ */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* ------------------------------------------------------------------------------------------------------------------ */
 /*                                      Technologie : js natif + jquery + animejs                                     */
 /* ------------------------------------------------------------------------------------------------------------------ */
 
@@ -11,7 +39,7 @@
 
 import $ from "jquery";
 import { films } from "./app";
-import { logo, rightNotif, wrongNotif } from "./animation";
+import { logo } from "./animation";
 
 /* ---------------------------------------------------- Variables --------------------------------------------------- */
 let tabFilm = films;
@@ -34,21 +62,21 @@ function displayFilm() {
     $("#displayFilm").empty();
     // on crée les éléments un par un et on utilise a méthode "text()" pour éviter l'injection dans notre site
     tabFilm.forEach((elem, i) => {
-        $("#displayFilm").append(`<tr id="line${i}"></tr>`);
+        $("#displayFilm").append(`&lt;tr id="line${i}">&lt;/tr>`);
         $(`#line${i}`)
-            .append($("<td class='shell'></td>").text(elem.title))
-            .append($(`<td class="shell"></td>`).text(elem.years))
-            .append($(`<td class="shellEnd"></td>`).text(elem.authors))
+            .append($("&lt;td class='shell'>&lt;/td>").text(elem.title))
+            .append($(`&lt;td class="shell">&lt;/td>`).text(elem.years))
+            .append($(`&lt;td class="shellEnd">&lt;/td>`).text(elem.authors))
             .append(
-                $(`<td class="shellEnd text-end">
-                            <button class="bg-red-900 w-10 rounded-lg p-1 transition duration-300 ease-in-out border border-red-900 hover:bg-neutral-200/80 hover:text-red-900 hover:scale-110 cursor-pointer deleteFilm" id="buttonLine${i}" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                                    <g stroke="currentColor" fill="currentColor">
-                                        <path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/>
-                                    </g>
-                                </svg>
-                            </button>
-                        </td>`)
+                $(`&lt;td class="shellEnd text-end">
+                            &lt;button class="bg-red-900 w-10 rounded-lg p-1 transition duration-300 ease-in-out border border-red-900 hover:bg-neutral-200/80 hover:text-red-900 hover:scale-110 cursor-pointer deleteFilm" id="buttonLine${i}" type="button">
+                                &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                    &lt;g stroke="currentColor" fill="currentColor">
+                                        &lt;path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/>
+                                    &lt;/g>
+                                &lt;/svg>
+                            &lt;/button>
+                        &lt;/td>`)
             );
     });
     // appelle la fonction pour générer un listener à chaque nouvelle création de bouton "supprimer"
@@ -74,11 +102,9 @@ function addFilm() {
             // affiche le message avec l'html que checkAddFilm lui renvoie
             $(resultCheck[0])
                 .addClass(
-                    "fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full border border-white/30 rounded-xl w-fit text-center text-teal-400 text-lg z-10 bg-teal-900/90 p-3 notif"
+                    "fixed top-10 left-1/2 -translate-x-1/2 border border-white/30 rounded-xl w-fit text-center text-teal-400 text-lg z-10 bg-teal-900/90 p-3 notif"
                 )
                 .appendTo("body");
-            //animation notif
-            rightNotif();
             $("#inputAddFilm").removeClass("flex").addClass("hidden");
             $("#buttonAddFilm").removeClass("hidden");
             // ajoute le nouveau film avec ses props dans le tableau
@@ -99,13 +125,11 @@ function addFilm() {
         } else {
             if (typeof timeoutNotif !== undefined) clearTimeout(timeoutNotif);
             $(".notif").remove();
-            $(`<ul><p class="mb-2">Erreur dans le formulaire :</p>${resultCheck[0]}</ul>`)
+            $(`&lt;ul>&lt;p class="mb-2">Erreur dans le formulaire :&lt;/p>${resultCheck[0]}&lt;/ul>`)
                 .addClass(
-                    "fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full border border-white/30 rounded-xl w-fit text-center text-red-600 text-lg md:text-xl plg:text-2xl z-10 bg-red-900/90 p-3 notif"
+                    "fixed top-10 left-1/2 -translate-x-1/2 border border-white/30 rounded-xl w-fit text-center text-red-600 text-lg z-10 bg-red-900/90 p-3 notif"
                 )
                 .appendTo("body");
-            //animation notif
-            wrongNotif();
             setTimeout(() => $(".notif").remove(), 8000);
         }
     });
@@ -120,19 +144,19 @@ function checkAddFilm() {
 
     // série de tests, ajoute l'erreur dans un li si l'entrée ne correspond pas
     if (!($("#title").val().length >= 2)) {
-        returnTab[0] += "<li>Le titre doit faire au moins 2 caractères</li>";
+        returnTab[0] += "&lt;li>Le titre doit faire au moins 2 caractères&lt;/li>";
         returnTab[1] = false;
     }
-    if (!(Number($("#years").val()) >= 1900 && Number($("#years").val()) <= today.getFullYear())) {
-        returnTab[0] += `<li>L'année doit être comprise entre 1900 et ${today.getFullYear()}</li>`;
+    if (!(Number($("#years").val()) >= 1900 &amp;&amp; Number($("#years").val()) &lt;= today.getFullYear())) {
+        returnTab[0] += `&lt;li>L'année doit être comprise entre 1900 et ${today.getFullYear()}&lt;/li>`;
         returnTab[1] = false;
     }
     if (!($("#authors").val().length >= 5)) {
-        returnTab[0] += "<li>L'auteur doit faire au moins 5 caractères</li>";
+        returnTab[0] += "&lt;li>L'auteur doit faire au moins 5 caractères&lt;/li>";
         returnTab[1] = false;
     }
     // si tous les tests sont réussis, modifie l'html pour indiquer le succès du check
-    if (returnTab[1] === true) returnTab[0] = "<p>Film ajouter avec succès</p>";
+    if (returnTab[1] === true) returnTab[0] = "&lt;p>Film ajouter avec succès&lt;/p>";
 
     return returnTab;
 }
@@ -158,27 +182,27 @@ function sortFilm() {
 function deleteFilm() {
     $(".deleteFilm").on("click", function () {
         let id = $(this).attr("id");
-        let notifDisplay = `<div class="absolute z-20 w-full h-full top-0 bg-white/30" id="notifConf">
-            <div
+        let notifDisplay = `&lt;div class="absolute z-20 w-full h-full top-0 bg-white/30" id="notifConf">
+            &lt;div
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cyan-950 p-5 border-2 border-teal-600 rounded-xl"
             >
-                <p class="text-xl p-3">Voulez-vous vraiment supprimer ?</p>
-                <button
+                &lt;p class="text-xl p-3">Voulez-vous vraiment supprimer ?&lt;/p>
+                &lt;button
                     class="p-2 float-left bg-neutral-200/50 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-neutral-200/30 hover:scale-110"
                     type="button"
                     id="confCancel"
                 >
                     Annuler
-                </button>
-                <button
+                &lt;/button>
+                &lt;button
                     class="float-right p-2 bg-red-800 rounded-lg cursor-pointer transition duration-100 ease-in-out hover:bg-red-900 hover:scale-110"
                     type="button"
                     id="confDelete"
                 >
                     Supprimer
-                </button>
-            </div>
-        </div>`;
+                &lt;/button>
+            &lt;/div>
+        &lt;/div>`;
 
         // notif pour confirmer la suppression
         $(notifDisplay).appendTo("body");
@@ -202,3 +226,26 @@ sortFilm();
 
 //animation
 logo();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-animation.html">animation</a></li><li><a href="module-script_index.html">script/index</a></li><li><a href="module-script_recherche_film.html">script/recherche_film</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Thu Dec 04 2025 17:12:01 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
