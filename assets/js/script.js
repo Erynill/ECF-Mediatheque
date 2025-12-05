@@ -11,7 +11,7 @@
 
 import $ from "jquery";
 import { films } from "./app";
-import { logo } from "./animation";
+import { logo, rightNotif, wrongNotif } from "./animation";
 
 /* ---------------------------------------------------- Variables --------------------------------------------------- */
 let tabFilm = films;
@@ -74,9 +74,11 @@ function addFilm() {
             // affiche le message avec l'html que checkAddFilm lui renvoie
             $(resultCheck[0])
                 .addClass(
-                    "fixed top-10 left-1/2 -translate-x-1/2 border border-white/30 rounded-xl w-fit text-center text-teal-400 text-lg z-10 bg-teal-900/90 p-3 notif"
+                    "fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full border border-white/30 rounded-xl w-fit text-center text-teal-400 text-lg z-10 bg-teal-900/90 p-3 notif"
                 )
                 .appendTo("body");
+            //animation notif
+            rightNotif();
             $("#inputAddFilm").removeClass("flex").addClass("hidden");
             $("#buttonAddFilm").removeClass("hidden");
             // ajoute le nouveau film avec ses props dans le tableau
@@ -99,9 +101,11 @@ function addFilm() {
             $(".notif").remove();
             $(`<ul><p class="mb-2">Erreur dans le formulaire :</p>${resultCheck[0]}</ul>`)
                 .addClass(
-                    "fixed top-10 left-1/2 -translate-x-1/2 border border-white/30 rounded-xl w-fit text-center text-red-600 text-lg z-10 bg-red-900/90 p-3 notif"
+                    "fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full border border-white/30 rounded-xl w-fit text-center text-red-600 text-lg md:text-xl plg:text-2xl z-10 bg-red-900/90 p-3 notif"
                 )
                 .appendTo("body");
+            //animation notif
+            wrongNotif();
             setTimeout(() => $(".notif").remove(), 8000);
         }
     });

@@ -10,7 +10,7 @@
 "use strict";
 
 import $ from "jquery";
-import { logo } from "./animation";
+import { logo, wrongNotif } from "./animation";
 
 /* ---------------------------------------------------- Variables --------------------------------------------------- */
 const apiKey = "34019c68";
@@ -27,15 +27,19 @@ function searchFilm(nbrPage) {
 
     //séries de tests pour construire l'url par concaténation
     if ($("#title").val() === "") {
-        //se référer à la fonction addFilm du script de base
+        /**
+         * @see addFilm
+         */
         if (typeof timeoutNotif !== undefined) clearTimeout(timeoutNotif);
         $(".notif").remove();
         $(`<p>Vous devez rentrer un titre</p>`)
             .addClass(
-                "fixed top-10 left-1/2 -translate-x-1/2 border border-white/30 rounded-xl w-fit text-center text-red-600 text-lg z-10 bg-red-900/90 p-3 notif"
+                "fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full border border-white/30 rounded-xl w-fit text-center text-red-600 text-2xl z-10 bg-red-900/90 p-3 notif"
             )
             .appendTo("body");
-        timeoutNotif = setTimeout(() => $(".notif").remove(), 3000);
+        //animation notif
+        wrongNotif();
+        timeoutNotif = setTimeout(() => $(".notif").remove(), 8000);
         return;
     } else {
         searchURL += `&s=${$("#title").val()}`;
@@ -69,7 +73,7 @@ function displayLoading() {
 /**
  * fonction d'appelle à l'API et transmet le json
  * @async
- * @param {string} url - url de l'API à fetch
+ * @param {string} url - url de l'API a fetch
  */
 async function fetchAPI(url) {
     try {
@@ -77,6 +81,7 @@ async function fetchAPI(url) {
         if (!response.ok) throw new Error(`Error problem: ${response.status}`);
         let json = response.json();
         let check = await handlerData(json);
+        //regarde si la fonction retourne, si oui c'est une erreur donc on l'envoie au catch
         if (typeof check !== "undefined") throw new Error(`${check}`);
     } catch (error) {
         let errorDisplay = ` <div class="ms-5">
